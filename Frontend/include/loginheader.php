@@ -5,22 +5,22 @@
 <?php                      // session validation      
   if (isset($_POST['login']))
   {
-	$username = @$_POST['username'];
-	$log = $db->query("SELECT * FROM `user` WHERE `Email` = '$username'");
-	$login = $log->fetch(\PDO::FETCH_ASSOC);
-	$password = md5(@$_POST['inputPwd']);
+  $username = @$_POST['username'];
+  $log = $db->query("SELECT * FROM user WHERE Email = '$username'");
+  $login = $log->fetch(\PDO::FETCH_ASSOC);
+  $password = md5(@$_POST['inputPwd']);
     //  check if the email and password are correct
     if ($_POST['username'] == $login['Email'] && $password == $login['Password'])
-	{
-		$_SESSION['is_login'] = true;
+  {
+    $_SESSION['is_login'] = true;
         $_SESSION['wrong'] = false;
         $_SESSION['username'] = $login['UserName'];  // keep the registration info in session later on use it for the nav bar dynamic changing (switch between My Profile and Register)
         $_SESSION['email'] = $_POST['username'];
-		$_SESSION['address'] = $login['Address'];
-		$_SESSION['phone'] = $login['PhoneNumber'];
+    $_SESSION['address'] = $login['Address'];
+    $_SESSION['phone'] = $login['PhoneNumber'];
         header('Location: index.php');
-	}
-	else 
+  }
+  else 
     {
         $_SESSION['is_login'] = false;
         $_SESSION['wrong'] = true;

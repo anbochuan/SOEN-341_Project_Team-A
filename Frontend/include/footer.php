@@ -55,8 +55,8 @@
       <div class="col-md-1">
         <a href="#" class="fa fa-instagram"></a>
       </div>
-      <div class="col-md-3">
-        <img src="./images/qrCode.png">
+       <div class="col-md-2">
+        <img src="images/qrCode.jpg" width="200" height="200">
       </div>
     </div>
     </br></br></br></br></br></br>

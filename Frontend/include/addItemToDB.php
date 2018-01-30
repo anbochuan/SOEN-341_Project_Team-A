@@ -4,36 +4,34 @@ include 'dbConnector.php';
 
 $productName=mysqli_real_escape_string($conn,$_POST['productName']);
 $price=mysqli_real_escape_string($conn,$_POST['price']);
+$productCategory1Id=mysqli_real_escape_string($conn,$_POST['productCategory']);
+$productCategory2Id=mysqli_real_escape_string($conn,$_POST['productCategory2']);
+$productCategory3Id=mysqli_real_escape_string($conn,$_POST['productCategory3']);
+$image1=mysqli_real_escape_string($conn,$_FILES['Image1']['tmp_name']);
+$imgContent1 = addslashes(file_get_contents($image1));
+$image2=mysqli_real_escape_string($conn,$_FILES['Image2']['tmp_name']);
+$imgContent2 = addslashes(file_get_contents($image2));
+$image3=mysqli_real_escape_string($conn,$_FILES['Image3']['tmp_name']);
+$imgContent3 = addslashes(file_get_contents($image3));
+$image4=mysqli_real_escape_string($conn,$_FILES['Image4']['tmp_name']);
+$imgContent4 = addslashes(file_get_contents($image4));
+$image5=mysqli_real_escape_string($conn,$_FILES['Image5']['tmp_name']);
+$imgContent5 = addslashes(file_get_contents($image5));
+$image6=mysqli_real_escape_string($conn,$_FILES['Image6']['tmp_name']);
+$imgContent6 = addslashes(file_get_contents($image6));
+$image7=mysqli_real_escape_string($conn,$_FILES['Image7']['tmp_name']);
+$imgContent7 = addslashes(file_get_contents($image7));
+$image8=mysqli_real_escape_string($conn,$_FILES['Image8']['tmp_name']);
+$imgContent8 = addslashes(file_get_contents($image8));
+$productDetail=mysqli_real_escape_string($conn,$_POST['text']);	  
 
+$email=$_SESSION['email'];
 
-$sql= "select First_Category from `category_level1` where `Id`=".mysqli_real_escape_string($conn, $_POST['productCategory1']);
-$res= mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($res);
-$productCategory1Name=$row['First_Category'];
-$sql = "select Second_Category from `category_level2` where `id`=".mysqli_real_escape_string($conn, $_POST['productCategory2']);
-$res= mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($res);
-$productCategory2Name =$row['Second_Category'];
-$sql = "select Third_Category from `category_level3` where `Id`=".mysqli_real_escape_string($conn, $_POST['productCategory3']);
-$res= mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($res);
-$productCategory3Name = $row['Third_Category'];
-$productDetail=mysqli_real_escape_string($conn,$_POST['text']);	
-if(isset($_POST["submit"])){
-    $check = getimagesize($_FILES["image1"]["tmp_name"]);
-    $check1 = getimagesize($_FILES["image2"]["tmp_name"]);
-    if($check !== false){
-        $image1 = $_FILES['image1']['tmp_name'];
-        $imgContent1 = addslashes(file_get_contents($image1));
-	}
-	 if($check1 !== false){
-        $image2 = $_FILES['image2']['tmp_name'];
-        $imgContent2 = addslashes(file_get_contents($image2));
-	}
-}
-    
-  
-$sql="INSERT INTO product(productName,productDetail,productCategory1,productCategory2,productCategory3,price,image1,image2,UserId) values('$productName','$productDetail','$productCategory1Name','$productCategory2Name','$productCategory3Name','$price','$imgContent1','$imgContent2','10')";
+$searchQuery="SELECT UserId FROM user WHERE Email = '$email'"; 
+$userNum = mysqli_query($conn,$searchQuery);
+$userID = $userNum->fetch_assoc();
+
+$sql="INSERT INTO `product`(productName,productDetail,price,Image1,Image2,Image3,Image4,Image5,Image6,Image7,Image8,UserID,productCategory,productCategory2,productCategory3) VALUES ('$productName','$productDetail','$price','$imgContent1','$imgContent2','$imgContent3','$imgContent4','$imgContent5','$imgContent6','$imgContent7','$imgContent8','$userID[UserId]','$productCategory1Id','$productCategory2Id','$productCategory3Id')";
 mysqli_query($conn,$sql);
 
 $queryLast="SELECT * FROM product WHERE UserId = $userID[UserId] ORDER BY ProductId DESC LIMIT 1";
@@ -41,7 +39,7 @@ $productNum = mysqli_query($conn,$queryLast);
 $productIDnum = $productNum->fetch_assoc();
 
 $_SESSION['ad'] = $productIDnum['ProductId'];
-$_SESSION['previous_page'] = addItemToDB.php;
+$_SESSION['previous_page'] = "addItemToDB.php";
 
 //echo "UserID: ".$userID['UserId']." ProductIdnumber: ".$productIDnum['ProductId'];
 

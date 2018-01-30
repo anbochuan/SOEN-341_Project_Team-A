@@ -8,9 +8,9 @@
     $username = $_POST['username'];
     $hashed_pwd = md5($password); // the password must be hashed before insert into DB
 
-  $result = $db->query("SELECT * FROM `user` WHERE `Email` = '$email'");
+  $result = $db->query("SELECT * FROM 'user' WHERE 'Email' = '$email'");
   $dbResult = $result->fetch(\PDO::FETCH_ASSOC);
-  $nameResult = $db->query("SELECT `UserName` FROM `user` WHERE `UserName` = '$username'");
+  $nameResult = $db->query("SELECT 'UserName' FROM 'user' WHERE 'UserName' = '$username'");
   $dbNameResult = $nameResult->fetch(\PDO::FETCH_ASSOC);
 
     if(strcasecmp($dbResult['Email'], $email)==0) // if find out the email already exist , refuse to add it into the db
@@ -61,9 +61,8 @@
 ?>
   <div class="jumbotron jumbotron-custom">
     <div class="container text-center">
-      <h1>Online Store</h1>
+      <h2>Online Store</h2>
       <a href="index.php"><img src="images/shop.png" height="100"></a>
-      <p>Coming soon...</p>
     </div>
   </div>
 <!--  Navigation bar -->
@@ -83,23 +82,22 @@
         <div class="collapse navbar-collapse" id="mainNavBar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="listings.php">Listings</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
 
             <!-- Right align -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
                   <?php if($_SESSION['is_login']) {  ?>
-                  <p><kbd>Welcome home <?php echo( $_SESSION['username'] ) ?> ! </kbd>  
-                    <a href="./userProfile.php" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-duplicate"></span>   My Profile</a>
-                    <a href="./inbox.php" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-inbox"></span>   Inbox</a>
-                    <a href="./product.php" class="btn btn-warning btn-lg"> <span class="glyphicon glyphicon-pushpin"></span>   Post Ad</a>
-                  </p>
+                    <p><kbd>Welcome home <?php echo( $_SESSION['username'] ) ?> ! </kbd>   
+                      <a href="./userProfile.php" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-duplicate"></span>   My profile</a>
+                      <a href="./wishList.php" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-heart-empty"></span>   My wish list</a>
+                      <a href="./product.php" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-pushpin"></span>   Post Ads</a>
+                    </p>
                   <?php  }  ?>
                   <?php if(!$_SESSION['is_login']) { ?>
-                  <p><a href="./register.php"><button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span>  Register</button></a></p>
-                  <?php } ?>
+                    <p><a href="./register.php"><button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span>  Register</button></a></p>
+                    <?php } ?>
                 </li>
 
                 <!-- when the user is logged in, Login button should be invisible -->
@@ -138,27 +136,34 @@
       </div>
       <div class="input-group">
         <!-- select dropdown menu -->
-          <select class="selectpicker form-control" name="city" required>
-              <option value="" selected disabled>Select location...</option>
+          <select class="selectpicker form-control" name="city">
+            <optgroup>
+              <option value="">Select location...</option>
+            </optgroup>
             <optgroup label="Alberta">
               <option value="Alberta">All of Alberta</option>
-              <option value="Calgary">Calgary</option>
-              <option value="Edmonton">Edmonton</option>
+              <option value="Banff/Canmore">Banff/Canmore</option>
+              <option value="Edmonton Area">Edmonton Area</option>
+              <option value="Fort McMurray">Fort McMurray</option>
             </optgroup>
             <optgroup label="British Columbia">
               <option value="BritishColumbia">All of British Columbia</option>
-              <option value="Vancouver">Vancouver</option>
-              <option value="Victoria">Victoria</option>
+              <option value="Cariboo Area">Cariboo Area</option>
+              <option value="Comox Valley Area">Comox Valley Area</option>
+              <option value="Cowicha Valley">Cowicha Valley</option>
             </optgroup>
             <optgroup label="Ontario">
               <option value="Ontario">All of Ontario</option>
-              <option value="Mississauga">Mississauga</option>
+              <option value="Muskoka">Muskoka</option>
+              <option value="North Bay">North Bay</option>
               <option value="Toronto">Toronto</option>
             </optgroup>
             <optgroup label="Quebec">
               <option value="Quebec">All of Quebec</option>
-              <option value="QuebecCity">Quebec City</option>
               <option value="Laval">Laval</option>
+              <option value="Granby">Granby</option>
+              <option value="QuebecCity">Quebec City</option>
+              <option value="Sherbrooke">Sherbrooke</option>
               <option value="Montreal">Montreal</option>
             </optgroup>
           </select>

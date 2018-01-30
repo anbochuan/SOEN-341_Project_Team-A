@@ -18,7 +18,7 @@
 </head>
 <body>
 <?php include ('include/header.php');?>
-  
+<?php include ('include/dynamicCarouselFunctions.php');?> 
   <!-- content here -->
   <div class="container-fluid">
 		
@@ -40,177 +40,26 @@
    <!-- Images gallery  -->
 	<h1>Popular items</h1>
     <div class="row">
-        <div id="my-slider" class="carousel slide" data-ride="carousel">
-
+        <div id="dynamic_slide_show" class="carousel slide col-9" data-ride="carousel">
           <!--  indicator dot nov  -->
           <ol class="carousel-indicators">
-            <li data-target="#my-slider" data-slide-to="0" class="active " ></li>
-            <li data-target="#my-slider" data-slide-to="1"></li>
-            <li data-target="#my-slider" data-slide-to="2"></li>
-            <li data-target="#my-slider" data-slide-to="3"></li>
+            <?php echo make_slide_indicators(); ?>
           </ol>
-
           <!--  wrapper for slides  -->
           <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/b5.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-              <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/b6.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-              <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/b11.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-              <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/b12.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-              <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/b13.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-              <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/b7.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-			</div>
-            <div class="item">
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/k1.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/k2.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/k3.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/k4.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/k5.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/k7.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
+              <?php echo make_slides(); ?>
             </div>
-
             <div class="item">
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/d1.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/d2.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/d3.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/d4.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/d5.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>
-               <div class=" col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <img class="img-responsive" width="350" height="350" src="images/d6.jpg" alt="">
-                  </div>
-                  <div class="panel-footer"> dumbo <div class="price">price：</div></div>
-                </div>
-              </div>         
+              <?php echo make_slides2(); ?>
             </div>
           </div>
-
           <!--  controls or next and pre buttons  -->
-          <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
+          <a class="left carousel-control" href="#dynamic_slide_show" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
+          <a class="right carousel-control" href="#dynamic_slide_show" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>

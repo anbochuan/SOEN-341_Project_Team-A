@@ -1,0 +1,42 @@
+/*voting style */
+.voting_wrapper 
+{
+	display:inline-block;
+	margin-left: 20px;
+}
+.voting_wrapper .down_button 
+{
+	background: url("../images/ThumbsDown.png") no-repeat 0px 0px;
+	float: left;
+	height: 30px;
+	width: 30px;
+	cursor:pointer;
+	margin-top: 3px;
+}
+/*.voting_wrapper .down_button:hover 
+{
+	background: url('../images/ThumbsDown.png') no-repeat 0px -16px;
+}*/
+.voting_wrapper .up_button 
+{
+	background: url('../images/ThumbsUp.png') no-repeat 0px 0px;
+	float: left;
+	height: 30px;
+	width: 30px;
+	cursor:pointer;
+}
+/*.voting_wrapper .up_button:hover
+{
+	background: url("../images/ThumbsUp.png") no-repeat -16px -16px;
+}*/
+.voting_btn
+{
+	float:left;
+	margin-right:10px;
+}
+.voting_btn span
+{
+	font-size: 16px;
+	float: left;
+	margin-left: 6px;
+}
